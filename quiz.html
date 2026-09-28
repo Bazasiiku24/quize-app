@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>クイズアプリ</title>
+<style>
+  body {
+    font-family: sans-serif;
+    max-width: 480px;
+    margin: 40px auto;
+    background: #f5f5f5;
+    color: #333;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  /* 今何問目かを表示するエリア */
+  #progress {
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  /* 問題文を表示するエリア */
+  #question-text {
+    font-size: 18px;
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    min-height: 40px;
+  }
+
+  /* JSでここに4つの選択肢ボタンを作って追加していく */
+  #choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #choices button {
+    padding: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+  }
+
+  /* JSで正解/不正解の見た目をつける想定のクラス */
+  #choices button.correct {
+    background: #b8f2c9;
+    border-color: #4caf50;
+  }
+
+  #choices button.wrong {
+    background: #f8c9c9;
+    border-color: #e74c3c;
+  }
+
+  /* 正解・不正解の結果メッセージ */
+  #result-text {
+    margin-top: 12px;
+    font-weight: bold;
+    min-height: 24px;
+  }
+
+  /* 「次へ」ボタン。最初は隠しておく想定(JSでdisplayを切り替える) */
+  #next-btn {
+    margin-top: 16px;
+    padding: 8px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    display: none;
+  }
+
+  /* 全問終了後の結果画面。最初は隠しておく想定 */
+  #score-area {
+    display: none;
+    background: white;
+    padding: 24px;
+    border-radius: 6px;
+  }
+
+  #score-text {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  #retry-btn {
+    padding: 8px 20px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+  <h1>4択クイズ</h1>
+
+  <!-- 出題エリア -->
+  <div id="quiz-area">
+    <!-- 例: 「第2問 / 全5問」のように表示する想定 -->
+    <div id="progress"></div>
+
+    <!-- 問題文をここに入れる -->
+    <div id="question-text"></div>
+
+    <!-- JSで<button>を4つ作って、ここに追加していく -->
+    <div id="choices">
+      <!-- 例: 完成イメージ(実際はJSで生成する)
+      <button>東京</button>
+      -->
+    </div>
+
+    <!-- 正解/不正解のメッセージをここに表示 -->
+    <div id="result-text"></div>
+
+    <!-- 選択後に押して次の問題へ進むボタン -->
+    <button id="next-btn">次へ</button>
+  </div>
+
+  <!-- 全問終了後に表示する結果エリア -->
+  <div id="score-area">
+    <!-- 例: 「5問中3問正解!」のように表示する想定 -->
+    <div id="score-text"></div>
+    <button id="retry-btn">もう一度挑戦する</button>
+  </div>
+
+  <script src="quiz.js"></script>
+</body>
+</html>
